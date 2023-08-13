@@ -9,8 +9,9 @@ cap = cv2.VideoCapture('pool.mp4')
 
 while True:
     success, frame = cap.read()
-    # cv2.imshow('camera', frame)
     img_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    # cv2.imshow('preview', frame) # для просмотра без обрамления для стопкадра:
+    # в строке if cv2.waitKey(0) & 0xff == ord('q'): "поставим waitKey(0)"
     faces = face.detectMultiScale(img_gray)
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 2), 2)
